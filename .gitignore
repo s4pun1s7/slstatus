@@ -1,0 +1,54 @@
+# Build artifacts
+*.o
+*.a
+*.so
+*.dylib
+
+# Executables
+dwm
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Core dumps
+core
+core.*
+
+# Temporary files
+*.tmp
+*.temp
+*~
+patches/
+
+# Backup files
+*.bak
+*.backup
+
+# Distribution files
+dwm-*.tar.gz
+dwm-*/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+config.h
+
+# Log files
+*.log
+
+# Object files from compilation
+*.o 
