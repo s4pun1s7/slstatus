@@ -5,7 +5,7 @@
 *.dylib
 
 # Executables
-dwm
+slstatus
 
 # Debug files
 *.dSYM/
@@ -21,15 +21,14 @@ core.*
 *.tmp
 *.temp
 *~
-patches/
 
 # Backup files
 *.bak
 *.backup
 
 # Distribution files
-dwm-*.tar.gz
-dwm-*/
+slstatus-*.tar.gz
+slstatus-*/
 
 # IDE files
 .vscode/
