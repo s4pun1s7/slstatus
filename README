@@ -8,29 +8,14 @@ only issuing the minimum of system calls required.
 
 Features
 --------
-- Battery percentage/state/time left
-- Cat (read file)
-- CPU usage
-- CPU frequency
-- Custom shell commands
-- Date and time
-- Disk status (free storage, percentage, total storage and used storage)
-- Available entropy
-- Username/GID/UID
-- Hostname
-- IP address (IPv4 and IPv6), interface status
-- Kernel version
-- Keyboard indicators
-- Keymap
-- Load average
-- Network speeds (RX and TX)
-- Number of files in a directory (hint: Maildir)
-- Memory status (free memory, percentage, total memory and used memory)
-- Swap status (free swap, percentage, total swap and used swap)
-- Temperature
-- Uptime
-- Volume percentage
-- WiFi signal percentage and ESSID
+
+Project Status
+--------------
+This is a custom build of slstatus, maintained as a submodule in my dotfiles. Custom patches and configuration are included. For updates, pull the latest changes from the main repo and submodules.
+
+Usage
+-----
+See the main README for setup instructions. Build and install as above. Configuration is in `config.h`.
 
 
 Requirements
