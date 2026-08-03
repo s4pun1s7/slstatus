@@ -66,12 +66,13 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-	{ keymap,        " [kb: %s]", "" },
-    { disk_perc,     " [/: %s%%]",  "/" },
-    { wifi_perc,     " [  %s%%]",  "wlp3s0" },
-    { cpu_perc,      " [cpu %s%%]",   NULL },
-    { ram_perc,      " [ram %s%%]",   NULL },
-    { battery_perc,  " [ %s%%",    "BAT0" },
-    { battery_state, "(%s)]",       "BAT0" },
-    { datetime,      " [%s]",     "%F %T" }
+	{ keymap,        " [kb: %s]",     "" },
+	{ disk_perc,     " [/: %s%%]",    "/" },
+	/* Broadcom wl driver: wifi_perc/nl80211 station dump fails; use NM */
+	{ run_command,   " [wifi: %s]",   "nmcli -t -f IN-USE,SSID,SIGNAL device wifi list --rescan no | awk -F: '$1==\"*\"{printf \"%s %s%%\", $2, $3; exit}'" },
+	{ cpu_perc,      " [cpu %s%%]",   NULL },
+	{ ram_perc,      " [ram %s%%]",   NULL },
+	{ temp,          " [temp %sC]",   "/sys/class/thermal/thermal_zone0/temp" },
+	{ run_command,   " [vol %s%%]",   "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{printf \"%d\", $2 * 100}'" },
+	{ datetime,      " [%s]",         "%F %T" }
 };
