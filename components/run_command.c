@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+#include <errno.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -10,6 +11,7 @@ run_command(const char *cmd)
 {
 	char *p;
 	FILE *fp;
+	int status;
 
 	if (!(fp = popen(cmd, "r"))) {
 		warn("popen '%s':", cmd);
@@ -17,7 +19,12 @@ run_command(const char *cmd)
 	}
 
 	p = fgets(buf, sizeof(buf) - 1, fp);
-	if (pclose(fp) < 0) {
+	status = pclose(fp);
+	/*
+	 * ECHILD is expected when SIGCHLD is SIG_IGN / SA_NOCLDWAIT (dwm).
+	 * Keep the output we already read instead of reporting n/a.
+	 */
+	if (status < 0 && errno != ECHILD) {
 		warn("pclose '%s':", cmd);
 		return NULL;
 	}

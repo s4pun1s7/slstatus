@@ -72,6 +72,15 @@ main(int argc, char *argv[])
 	if (argc)
 		usage();
 
+	/*
+	 * dwm sets SIGCHLD to SIG_IGN (SA_NOCLDWAIT). Autostart children inherit
+	 * that, which makes pclose() fail with ECHILD and every run_command block
+	 * (wifi, volume, …) show as n/a. Restore the default before we popen.
+	 */
+	memset(&act, 0, sizeof(act));
+	act.sa_handler = SIG_DFL;
+	sigaction(SIGCHLD, &act, NULL);
+
 	memset(&act, 0, sizeof(act));
 	act.sa_handler = terminate;
 	sigaction(SIGINT,  &act, NULL);
