@@ -73,6 +73,6 @@ static const struct arg args[] = {
 	{ cpu_perc,      " [cpu %s%%]",   NULL },
 	{ ram_perc,      " [ram %s%%]",   NULL },
 	{ temp,          " [temp %sC]",   "/sys/class/thermal/thermal_zone0/temp" },
-	{ run_command,   " [vol %s%%]",   "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{printf \"%d\", $2 * 100}'" },
+	{ run_command,   " [vol %s]",    "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{ if ($NF==\"[MUTED]\") printf \"mute\"; else printf \"%d%%\", $2*100 }'" },
 	{ datetime,      " [%s]",         "%F %T" }
 };
